@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody2D  
 
 @export var speed = 100
 var ball

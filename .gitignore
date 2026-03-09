@@ -1,0 +1,22 @@
+# Godot-specific ignores
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*
+
+# System-specific ignores
+.DS_Store
+Thumbs.db
+
+# Android
+android/build/
+*.apk
+*.idsig
+
+# Scene temporary files
+scenes/*.tmp
