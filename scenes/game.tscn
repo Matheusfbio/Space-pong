@@ -23,6 +23,9 @@ func _process(delta: float) -> void:
 font_size = 220
 font_color = Color(0.13275719, 5.5398494e-05, 0.46275884, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_lbhrr"]
+font_size = 40
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb7cy"]
 size = Vector2(497.5, 63)
 
@@ -46,6 +49,7 @@ offset_top = -705.0
 offset_right = 461.0
 grow_vertical = 0
 script = SubResource("GDScript_lnu2h")
+metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Sprite2D" parent="CanvasLayer/HBoxContainer" unique_id=79897670]
 position = Vector2(229.25005, 354.56287)
@@ -53,6 +57,7 @@ scale = Vector2(0.8583332, 0.7509107)
 texture = ExtResource("1_62qvw")
 
 [node name="Pongs" type="Label" parent="CanvasLayer/HBoxContainer/Background" unique_id=434986434]
+visible = false
 offset_left = -123.786514
 offset_top = -169.87753
 offset_right = 128.21349
@@ -61,6 +66,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_lnu2h")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Ball" parent="CanvasLayer/HBoxContainer/Background" unique_id=1330941247 instance=ExtResource("3_r68vm")]
 z_index = 1
@@ -68,8 +74,20 @@ position = Vector2(-7.281555, 372.14548)
 scale = Vector2(1.165049, 1.3152945)
 
 [node name="Player" parent="CanvasLayer/HBoxContainer/Background" unique_id=1849499661 instance=ExtResource("2_f1na5")]
-position = Vector2(-57.378654, 433.96436)
-scale = Vector2(1.165049, 1.3152945)
+position = Vector2(-35.242783, 424.06793)
+scale = Vector2(0.53361005, 0.9727723)
+
+[node name="Tutorial" type="Label" parent="CanvasLayer/HBoxContainer/Background" unique_id=1325829255]
+offset_left = -267.0875
+offset_top = -450.8697
+offset_right = 269.99997
+offset_bottom = 476.00488
+text = "Press \"space\" to start
+"
+label_settings = SubResource("LabelSettings_lbhrr")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="TopWall" type="StaticBody2D" parent="CanvasLayer/HBoxContainer" unique_id=1039906235]
 
@@ -80,14 +98,14 @@ shape = SubResource("RectangleShape2D_hb7cy")
 [node name="LeftWall" type="StaticBody2D" parent="CanvasLayer/HBoxContainer" unique_id=1684365257]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/HBoxContainer/LeftWall" unique_id=431805077]
-position = Vector2(507, 362)
+position = Vector2(509, 338)
 shape = SubResource("RectangleShape2D_w8287")
 
 [node name="RightWall" type="StaticBody2D" parent="CanvasLayer/HBoxContainer" unique_id=764466029]
 position = Vector2(-300, -84)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/HBoxContainer/RightWall" unique_id=464847269]
-position = Vector2(252, 449.25)
+position = Vector2(251, 421.25)
 shape = SubResource("RectangleShape2D_w8287")
 
 [node name="Hole" type="Area2D" parent="CanvasLayer/HBoxContainer" unique_id=682265734]
@@ -96,3 +114,5 @@ shape = SubResource("RectangleShape2D_w8287")
 position = Vector2(238, 749)
 shape = SubResource("RectangleShape2D_6aq72")
 debug_color = Color(0.972549, 0, 0, 0.419608)
+
+[connection signal="body_entered" from="CanvasLayer/HBoxContainer/Hole" to="." method="_on_hole_body_entered"]

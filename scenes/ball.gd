@@ -18,7 +18,7 @@ func _physics_process(delta):
 				velocity = velocity.bounce(collision.get_normal()) * incremental_speed
 			else:
 				velocity = velocity.bounce(collision.get_normal())	
-		print(velocity)
+		#print(velocity)
 
 func start_game():
 	started = true
